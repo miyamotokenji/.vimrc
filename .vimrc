@@ -23,15 +23,20 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'dyng/ctrlsf.vim'
 Plugin 'ctrlpvim/ctrlp.vim' 
-Plugin 'terryma/vim-multiple-cursors' 
+" Plugin 'terryma/vim-multiple-cursors' 
 Plugin 'dhruvasagar/vim-zoom' 
 Plugin 'itmammoth/run-rspec.vim'
-Plugin 'thoughtbot/vim-rspec'
+" Plugin 'thoughtbot/vim-rspec'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'mhinz/vim-signify'
 Plugin 'tpope/vim-surround'
 Plugin 'morhetz/gruvbox'
 Plugin 'mildred/vim-bufmru'
+Plugin 'ycm-core/YouCompleteMe'
+Plugin 'kylef/apiblueprint.vim'
+Plugin 'tpope/vim-dispatch'
+Plugin 'tpope/vim-sleuth'
+
 
 call vundle#end()            
 
@@ -85,6 +90,7 @@ let NERDTreeShowHidden=1
 
 " ctrlsf.vim
 nmap <leader>f <Plug>CtrlSFPrompt
+nmap <leader>ft :CtrlSFToggle<CR>
 
 " vim-airline
 let g:airline#extensions#tabline#enabled = 1
@@ -93,15 +99,17 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline_theme='gruvbox'
 
 " vim-multiple-cursors
-let g:multi_cursor_use_default_mapping=0
-let g:multi_cursor_start_word_key      = '<C-y>'
-let g:multi_cursor_next_key            = '<C-y>'
-let g:multi_cursor_skip_key            = '<C-x>'
-let g:multi_cursor_quit_key            = '<Esc>'
+" let g:multi_cursor_use_default_mapping=0
+" let g:multi_cursor_start_word_key      = '<C-y>'
+" let g:multi_cursor_next_key            = '<C-y>'
+" let g:multi_cursor_skip_key            = '<C-x>'
+" let g:multi_cursor_quit_key            = '<Esc>'
 
 " run-spec.vim
 let g:run_rspec_bin = 'bin/rspec'
 nnoremap <leader>r :RunSpec<CR>
+nnoremap <leader>rl :RunSpecLine<CR>
+nnoremap <leader>rc :RunSpecCloseResult<CR>
 
 " ctrlp.vim
 let g:ctrlp_show_hidden=1
@@ -117,9 +125,24 @@ set updatetime=100
 " ALE
 let g:ale_ruby_rubocop_executable = 'bundle'
 let g:ale_ruby_brakeman_executable = 'bundle'
+let g:ale_cache_executable_check_failures=1
+
 
 " vim-fugitive
-nmap <leader>gs :Gstatus<CR>
+nmap <leader>gs :Git<CR>
+
+" ycm
+let g:ycm_clangd_binary_path='clangd'
+let g:ycm_lsp_dir = '/Users/kenji/lsp-examples'
+let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_auto_hover=''
+let g:ycm_language_server = [
+  \   {
+  \     'name': 'ruby',
+  \     'cmdline': [ expand( g:ycm_lsp_dir . '/ruby/bin/solargraph' ), 'stdio' ],
+  \     'filetypes': [ 'ruby' ],
+  \   },
+  \ ]
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
@@ -301,6 +324,7 @@ map <leader>h :bprevious<cr>
 
 " Useful mappings for managing tabs
 map <leader>tn :tabnew<cr>
+map <leader>tz :tabnew %<cr>
 map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove 
