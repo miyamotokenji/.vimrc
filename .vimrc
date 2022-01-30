@@ -36,6 +36,8 @@ Plugin 'ycm-core/YouCompleteMe'
 Plugin 'kylef/apiblueprint.vim'
 Plugin 'tpope/vim-dispatch'
 Plugin 'tpope/vim-sleuth'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
 
 
 call vundle#end()            
@@ -144,6 +146,9 @@ let g:ycm_language_server = [
   \   },
   \ ]
 
+let g:UltiSnipsExpandTrigger="<c-j>"
+
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -227,6 +232,7 @@ syntax enable
 
 autocmd vimenter * ++nested colorscheme gruvbox
 let g:gruvbox_contrast_dark='medium'
+let g:gruvbox_contrast_light='soft'
 
 set termguicolors
 
