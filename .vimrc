@@ -38,7 +38,8 @@ Plugin 'tpope/vim-dispatch'
 Plugin 'tpope/vim-sleuth'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
-
+Plugin 'tpope/vim-endwise'
+Plugin 'rstacruz/vim-closer'
 
 call vundle#end()            
 
@@ -80,6 +81,9 @@ command! W execute 'w !sudo tee % > /dev/null' <bar> edit!
 set timeoutlen=1000 ttimeoutlen=0
 
 set colorcolumn=80
+
+" Use syntax folding
+set foldmethod=syntax
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugin Settings
@@ -137,7 +141,7 @@ nmap <leader>gs :Git<CR>
 let g:ycm_clangd_binary_path='clangd'
 let g:ycm_lsp_dir = '/Users/kenji/lsp-examples'
 let g:ycm_autoclose_preview_window_after_insertion = 1
-let g:ycm_auto_hover=''
+" let g:ycm_auto_hover=''
 let g:ycm_language_server = [
   \   {
   \     'name': 'ruby',
