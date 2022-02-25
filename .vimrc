@@ -43,7 +43,6 @@ Plugin 'rstacruz/vim-closer'
 
 call vundle#end()            
 
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -81,9 +80,6 @@ command! W execute 'w !sudo tee % > /dev/null' <bar> edit!
 set timeoutlen=1000 ttimeoutlen=0
 
 set colorcolumn=80
-
-" Use syntax folding
-set foldmethod=syntax
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugin Settings
@@ -151,7 +147,7 @@ let g:ycm_language_server = [
   \ ]
 
 let g:UltiSnipsExpandTrigger="<c-j>"
-
+let g:ycm_max_num_candidates = 10
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
@@ -223,10 +219,15 @@ if has("gui_macvim")
     autocmd GUIEnter * set vb t_vb=
 endif
 
-
 " Add a bit extra margin to the left
 set foldcolumn=1
 
+" Use syntax folding
+set foldmethod=syntax
+autocmd BufRead * normal zR
+
+" Also enable syntax highlighting for markdown files with .md extension
+au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
