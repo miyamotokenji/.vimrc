@@ -40,6 +40,7 @@ Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'tpope/vim-endwise'
 Plugin 'rstacruz/vim-closer'
+Plugin 'junegunn/vim-easy-align'
 
 call vundle#end()            
 
@@ -137,7 +138,7 @@ nmap <leader>gs :Git<CR>
 let g:ycm_clangd_binary_path='clangd'
 let g:ycm_lsp_dir = '/Users/kenji/lsp-examples'
 let g:ycm_autoclose_preview_window_after_insertion = 1
-" let g:ycm_auto_hover=''
+let g:ycm_auto_hover=''
 let g:ycm_language_server = [
   \   {
   \     'name': 'ruby',
@@ -148,6 +149,13 @@ let g:ycm_language_server = [
 
 let g:UltiSnipsExpandTrigger="<c-j>"
 let g:ycm_max_num_candidates = 10
+
+" vim-easy-align
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
