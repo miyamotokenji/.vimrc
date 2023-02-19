@@ -38,9 +38,17 @@ Plugin 'tpope/vim-dispatch'
 Plugin 'tpope/vim-sleuth'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
-Plugin 'tpope/vim-endwise'
-Plugin 'rstacruz/vim-closer'
+Plugin 'tpope/vim-endwise' 
+" Plugin 'rstacruz/vim-closer' Broken
+" Plugin 'tmsvg/pear-tree'
 Plugin 'junegunn/vim-easy-align'
+Plugin 'jpalardy/vim-slime'
+Plugin 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plugin 'junegunn/fzf.vim'
+
+Plugin 'mxw/vim-jsx'
+Plugin 'pangloss/vim-javascript'
+
 
 call vundle#end()            
 
@@ -92,8 +100,12 @@ nmap <leader>nf :NERDTreeFind<CR>
 let NERDTreeShowHidden=1
 
 " ctrlsf.vim
-nmap <leader>f <Plug>CtrlSFPrompt
-nmap <leader>ft :CtrlSFToggle<CR>
+" nmap <leader>f <Plug>CtrlSFPrompt
+" nmap <leader>ft :CtrlSFToggle<CR>
+
+" FZF
+nmap <leader>f :Ag<CR>
+let g:fzf_layout = { 'down': '~50%' }
 
 " vim-airline
 let g:airline#extensions#tabline#enabled = 1
@@ -129,6 +141,11 @@ set updatetime=100
 let g:ale_ruby_rubocop_executable = 'bundle'
 let g:ale_ruby_brakeman_executable = 'bundle'
 let g:ale_cache_executable_check_failures=1
+
+" Comment out to use rubocop
+let g:ale_linters = {'ruby': ['standardrb']}
+let g:ale_fixers = {'ruby': ['standardrb']}
+
 
 
 " vim-fugitive
@@ -231,11 +248,14 @@ endif
 set foldcolumn=1
 
 " Use syntax folding
-set foldmethod=syntax
-autocmd BufRead * normal zR
+" set foldmethod=syntax
+" autocmd BufRead * normal zR
 
 " Also enable syntax highlighting for markdown files with .md extension
 au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
+
+
+runtime macros/matchit.vim
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
