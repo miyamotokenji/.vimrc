@@ -32,7 +32,7 @@ Plugin 'mhinz/vim-signify'
 Plugin 'tpope/vim-surround'
 Plugin 'morhetz/gruvbox'
 Plugin 'mildred/vim-bufmru'
-Plugin 'ycm-core/YouCompleteMe'
+" Plugin 'ycm-core/YouCompleteMe'
 Plugin 'kylef/apiblueprint.vim'
 Plugin 'tpope/vim-dispatch'
 Plugin 'tpope/vim-sleuth'
@@ -48,6 +48,9 @@ Plugin 'junegunn/fzf.vim'
 
 Plugin 'mxw/vim-jsx'
 Plugin 'pangloss/vim-javascript'
+Plugin 'github/copilot.vim'
+
+Plugin 'vim-test/vim-test'
 
 
 call vundle#end()            
@@ -122,9 +125,10 @@ let g:airline_theme='gruvbox'
 
 " run-spec.vim
 let g:run_rspec_bin = 'bin/rspec'
-nnoremap <leader>r :RunSpec<CR>
-nnoremap <leader>rl :RunSpecLine<CR>
-nnoremap <leader>rc :RunSpecCloseResult<CR>
+" let g:run_rspec_bin = 'bundle exec rspec'
+" nnoremap <leader>r :RunSpec<CR>
+" nnoremap <leader>rl :RunSpecLine<CR>
+" nnoremap <leader>rc :RunSpecCloseResult<CR>
 
 " ctrlp.vim
 let g:ctrlp_show_hidden=1
@@ -143,8 +147,8 @@ let g:ale_ruby_brakeman_executable = 'bundle'
 let g:ale_cache_executable_check_failures=1
 
 " Comment out to use rubocop
-let g:ale_linters = {'ruby': ['standardrb']}
-let g:ale_fixers = {'ruby': ['standardrb']}
+" let g:ale_linters = {'ruby': ['standardrb']}
+" let g:ale_fixers = {'ruby': ['standardrb']}
 
 
 
@@ -152,20 +156,23 @@ let g:ale_fixers = {'ruby': ['standardrb']}
 nmap <leader>gs :Git<CR>
 
 " ycm
-let g:ycm_clangd_binary_path='clangd'
-let g:ycm_lsp_dir = '/Users/kenji/lsp-examples'
-let g:ycm_autoclose_preview_window_after_insertion = 1
-let g:ycm_auto_hover=''
-let g:ycm_language_server = [
-  \   {
-  \     'name': 'ruby',
-  \     'cmdline': [ expand( g:ycm_lsp_dir . '/ruby/bin/solargraph' ), 'stdio' ],
-  \     'filetypes': [ 'ruby' ],
-  \   },
-  \ ]
+" source /Users/kenjimiyamoto/lsp-examples/vimrc.generated
+" let g:ycm_clangd_binary_path='clangd'
+" let g:ycm_lsp_dir = '/Users/kenji/lsp-examples'
+" let g:ycm_autoclose_preview_window_after_insertion = 1
+" let g:ycm_auto_hover=''
+"let g:ycm_language_server = [
+"  \   {
+  " \     'name': 'ruby',
+  " \     'cmdline': [ expand( g:ycm_lsp_dir . '/ruby/bin/solargraph' ), 'stdio' ],
+  " \     'filetypes': [ 'ruby' ],
+  " \   },
+  " \ ]
 
+"let g:ycm_max_num_candidates = 10
+
+" UltiSnips
 let g:UltiSnipsExpandTrigger="<c-j>"
-let g:ycm_max_num_candidates = 10
 
 " vim-easy-align
 " Start interactive EasyAlign in visual mode (e.g. vipga)
@@ -173,6 +180,17 @@ xmap ga <Plug>(EasyAlign)
 
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
+
+"vim-test
+
+
+nmap <silent> <leader>rl :TestNearest<CR>
+nmap <silent> <leader>r :TestFile<CR>
+
+let test#strategy = "neovim"
+let g:test#preserve_screen = 1
+let g:test#neovim#start_normal = 1
+let test#neovim#term_position = "hor botright 15"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
