@@ -1,2 +1,4 @@
-# vimrc
-Kenji Miyamoto's .vimrc, it requires [Vundle](https://github.com/VundleVim/Vundle.vim).
+# Symlinks
+
+ln -s ~/dotfiles/.vimrc ~/.vimrc
+ln -s ~/dotfiles/.tmux.conf.local ~/.tmux.conf.local
