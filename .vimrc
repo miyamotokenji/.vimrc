@@ -132,6 +132,7 @@ let g:run_rspec_bin = 'bin/rspec'
 
 " ctrlp.vim
 let g:ctrlp_show_hidden=1
+let g:ctrlp_max_files=0
 
 " vim-rspec
 " let g:rspec_command = "bin/rspec {spec}"
