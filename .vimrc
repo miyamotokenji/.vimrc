@@ -36,7 +36,7 @@ Plugin 'mildred/vim-bufmru'
 Plugin 'kylef/apiblueprint.vim'
 Plugin 'tpope/vim-dispatch'
 Plugin 'tpope/vim-sleuth'
-Plugin 'SirVer/ultisnips'
+" Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'tpope/vim-endwise' 
 " Plugin 'rstacruz/vim-closer' Broken
@@ -173,7 +173,7 @@ nmap <leader>gs :Git<CR>
 "let g:ycm_max_num_candidates = 10
 
 " UltiSnips
-let g:UltiSnipsExpandTrigger="<c-j>"
+" let g:UltiSnipsExpandTrigger="<c-j>"
 
 " vim-easy-align
 " Start interactive EasyAlign in visual mode (e.g. vipga)
